@@ -1,0 +1,20 @@
+<Project>
+  <Target Name="SetIBMAgeStructureResultsWriterPluginBuildDestination"
+          AfterTargets="ResolveReferences">
+    <ItemGroup>
+      <ReferenceCopyLocalPaths Update="@(ReferenceCopyLocalPaths)"
+                               Condition="'%(ReferenceCopyLocalPaths.Filename)' == 'EwEIBMAgeStructureResultsWriterPlugin'">
+        <DestinationSubDirectory>Plugins\IBMAgeStructureResultsWriterPlugin\</DestinationSubDirectory>
+      </ReferenceCopyLocalPaths>
+    </ItemGroup>
+  </Target>
+  <Target Name="SetIBMAgeStructureResultsWriterPluginPublishDestination"
+          AfterTargets="ComputeResolvedFilesToPublishList">
+    <ItemGroup>
+      <ResolvedFileToPublish Update="@(ResolvedFileToPublish)"
+                             Condition="'%(ResolvedFileToPublish.Filename)' == 'EwEIBMAgeStructureResultsWriterPlugin'">
+        <RelativePath>Plugins\IBMAgeStructureResultsWriterPlugin\%(ResolvedFileToPublish.Filename)%(ResolvedFileToPublish.Extension)</RelativePath>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+</Project>
